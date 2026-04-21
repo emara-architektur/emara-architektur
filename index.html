@@ -9,7 +9,7 @@
     :root {
       --bg: #f8eeee;
       --panel: #fff8f8;
-      --panel-2: #f4e3e4;
+      --panel-2: #f3dfe0;
       --text: #704046;
       --accent: #9e1f24;
       --soft-accent: #a23840;
@@ -33,7 +33,6 @@
       padding: 40px 20px 80px;
     }
 
-    /* NAV */
     .nav {
       display: flex;
       justify-content: space-between;
@@ -41,37 +40,49 @@
       border-bottom: 1px solid var(--line);
       padding-bottom: 20px;
       margin-bottom: 40px;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     .logo-wrap {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
     }
 
     .logo-wrap img {
-      height: 40px;
+      height: 42px;
+      width: auto;
+      display: block;
+      opacity: 0.92;
     }
 
     .brand {
       font-size: 12px;
       letter-spacing: 0.35em;
       color: var(--soft-accent);
+      text-transform: uppercase;
     }
 
-    .nav a {
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
       text-decoration: none;
-      margin-left: 20px;
       font-size: 11px;
       letter-spacing: 0.3em;
       color: var(--soft-accent);
+      text-transform: uppercase;
     }
 
-    /* HERO */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 30px;
+      align-items: stretch;
     }
 
     .card {
@@ -87,29 +98,39 @@
       color: var(--accent);
       margin: 0;
       letter-spacing: 0.1em;
+      line-height: 0.95;
     }
 
     .sub {
-      margin-top: 10px;
+      margin-top: 16px;
       font-size: 12px;
       letter-spacing: 0.4em;
       color: var(--soft-accent);
+      text-transform: uppercase;
     }
 
     .lead {
-      margin-top: 25px;
+      margin-top: 38px;
       font-size: 18px;
       line-height: 1.7;
+      max-width: 680px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 36px;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 30px;
-      padding: 12px 22px;
+      padding: 14px 24px;
       border-radius: 999px;
       font-size: 12px;
       letter-spacing: 0.2em;
       text-decoration: none;
+      text-transform: uppercase;
     }
 
     .btn-primary {
@@ -120,39 +141,30 @@
     .btn-secondary {
       border: 1px solid var(--line);
       color: var(--accent);
-      margin-left: 10px;
+      background: transparent;
     }
 
-    /* IMAGE (UPGRADED LOOK) */
     .image-box {
       border-radius: 30px;
       overflow: hidden;
       border: 1px solid var(--line);
-      background: var(--panel-2);
-      box-shadow: 0 20px 60px rgba(158, 31, 36, 0.15);
+      background: #f2dede;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 520px;
     }
 
     .image-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(100%) contrast(1.15) brightness(1.05);
-      transform: scale(1.03);
+      width: 88%;
+      height: auto;
+      object-fit: contain;
+      filter: grayscale(100%) brightness(1.02);
+      transform: translateX(30px) translateY(10px);
+      display: block;
     }
 
-    .image-box::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(255,255,255,0) 60%,
-        rgba(158,31,36,0.08)
-      );
-    }
-
-    /* INFO GRID */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -161,7 +173,7 @@
     }
 
     .panel {
-      padding: 25px;
+      padding: 28px;
       border-radius: 25px;
       border: 1px solid var(--line);
       background: var(--panel);
@@ -170,29 +182,51 @@
     .panel h3 {
       font-family: Georgia, serif;
       color: var(--accent);
-      margin-top: 10px;
+      margin: 0 0 14px 0;
+      font-size: 26px;
     }
 
-    /* FOOTER */
+    .panel p {
+      margin: 0;
+      line-height: 1.55;
+      font-size: 16px;
+    }
+
     .footer {
       margin-top: 40px;
       border-top: 1px solid var(--line);
       padding-top: 20px;
       display: flex;
       justify-content: space-between;
+      gap: 16px;
       font-size: 11px;
       letter-spacing: 0.3em;
       color: var(--soft-accent);
+      text-transform: uppercase;
+      flex-wrap: wrap;
     }
 
-    /* MOBILE */
     @media (max-width: 900px) {
-      .hero, .grid {
+      .hero,
+      .grid {
         grid-template-columns: 1fr;
       }
 
       h1 {
-        font-size: 50px;
+        font-size: 52px;
+      }
+
+      .card {
+        padding: 34px;
+      }
+
+      .image-box {
+        min-height: 420px;
+      }
+
+      .image-box img {
+        width: 92%;
+        transform: translateX(10px) translateY(10px);
       }
     }
   </style>
@@ -200,76 +234,74 @@
 
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <!-- NAV -->
-  <div class="nav">
-    <div class="logo-wrap">
-      <img src="logo.png" alt="EMARA Logo">
-      <div class="brand">EMARA ARCHITEKTUR</div>
+    <div class="nav">
+      <div class="logo-wrap">
+        <img src="logo.png" alt="EMARA Logo">
+        <div class="brand">EMARA Architektur</div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#">Über mich</a>
+        <a href="#">Fokus</a>
+        <a href="https://instagram.com/emara.architektur" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
     </div>
 
-    <div>
-      <a href="#">ÜBER MICH</a>
-      <a href="#">FOKUS</a>
-      <a href="https://instagram.com/emara.architektur">INSTAGRAM</a>
+    <div class="hero">
+
+      <div class="card">
+        <h1>EMARA</h1>
+        <div class="sub">Architekturstudentin</div>
+
+        <p class="lead">
+          Ich entwerfe Räume, die Menschen berühren – so, wie mich der Entwurfsprozess selbst begeistert.
+        </p>
+
+        <div class="button-row">
+          <a class="btn btn-primary" href="https://instagram.com/emara.architektur" target="_blank" rel="noopener noreferrer">
+            Instagram ansehen
+          </a>
+
+          <a class="btn btn-secondary" href="#">
+            Mehr
+          </a>
+        </div>
+      </div>
+
+      <div class="image-box">
+        <img src="emma-stuhl.jpg" alt="Emma Rauwolf auf einem Sessel">
+      </div>
+
     </div>
+
+    <div class="grid">
+
+      <div class="panel">
+        <h3>Über mich</h3>
+        <p>Architekturstudentin mit Fokus auf Entwurf und Gestaltung.</p>
+      </div>
+
+      <div class="panel">
+        <h3>Fokus</h3>
+        <p>Entwurf · Konzept · Wohnbau · Nachhaltigkeit · öffentliche Gebäude</p>
+      </div>
+
+      <div class="panel">
+        <h3>Standort</h3>
+        <p>Augsburg / Rosenheim</p>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <span>EMARA</span>
+      <span>Architektur</span>
+      <span>2026</span>
+    </div>
+
   </div>
-
-  <!-- HERO -->
-  <div class="hero">
-
-    <div class="card">
-      <h1>EMARA</h1>
-      <div class="sub">ARCHITEKTURSTUDENTIN</div>
-
-      <p class="lead">
-        Ich entwerfe Räume, die Menschen berühren – so, wie mich der Entwurfsprozess selbst begeistert.
-      </p>
-
-      <a class="btn btn-primary" href="https://instagram.com/emara.architektur">
-        INSTAGRAM ANSEHEN
-      </a>
-
-      <a class="btn btn-secondary" href="#">
-        MEHR
-      </a>
-    </div>
-
-    <div class="image-box">
-      <img src="emma-stuhl.jpg" alt="Emma Rauwolf">
-    </div>
-
-  </div>
-
-  <!-- INFO -->
-  <div class="grid">
-
-    <div class="panel">
-      <h3>Über mich</h3>
-      <p>Architekturstudentin mit Fokus auf Entwurf und Gestaltung.</p>
-    </div>
-
-    <div class="panel">
-      <h3>Fokus</h3>
-      <p>Entwurf · Konzept · Wohnbau · Nachhaltigkeit · öffentliche Gebäude</p>
-    </div>
-
-    <div class="panel">
-      <h3>Standort</h3>
-      <p>Augsburg / Rosenheim</p>
-    </div>
-
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <span>EMARA</span>
-    <span>ARCHITEKTUR</span>
-    <span>2026</span>
-  </div>
-
-</div>
 
 </body>
 </html>
