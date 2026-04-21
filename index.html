@@ -1,397 +1,149 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EMARA Architektur</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMARA Architektur</title>
 
-  <style>
-    :root {
-      --bg: #f7eded;
-      --panel: #fcf7f7;
-      --panel-2: #f2dfe0;
-      --text: #74484d;
-      --accent: #a61f28;
-      --soft-accent: #b35b63;
-      --line: #e3c7c9;
-      --shadow: 0 18px 55px rgba(123, 59, 65, 0.07);
-    }
+<style>
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+    background: #f7f3f1;
+    color: #2b2b2b;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #fcf6f6 0%, var(--bg) 100%);
-      color: var(--text);
-    }
+.text {
+    flex: 1;
+}
 
-    .container {
-      max-width: 1380px;
-      margin: 0 auto;
-      padding: 42px 26px 90px;
-    }
+.text h1 {
+    font-size: 56px;
+    color: #a62b2b;
+    margin: 0;
+}
 
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 22px;
-      margin-bottom: 54px;
-    }
+.text p {
+    margin: 20px 0;
+    line-height: 1.6;
+}
 
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
+.buttons {
+    display: flex;
+    gap: 15px;
+}
 
-    .logo-wrap img {
-      height: 52px;
-      width: auto;
-      display: block;
-      opacity: 0.92;
-    }
+.btn {
+    padding: 12px 22px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
 
-    .brand {
-      font-size: 12px;
-      color: var(--soft-accent);
-      text-transform: uppercase;
-      letter-spacing: 0.38em;
-      white-space: nowrap;
-    }
+.btn-primary {
+    background: #a62b2b;
+    color: white;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 34px;
-      flex-wrap: wrap;
-    }
+.btn-secondary {
+    background: transparent;
+    border: 1px solid #a62b2b;
+    color: #a62b2b;
+}
 
-    .nav-links a {
-      text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: var(--soft-accent);
-      transition: opacity 0.2s ease;
-    }
+.image {
+    flex: 1;
+}
 
-    .nav-links a:hover {
-      opacity: 0.65;
-    }
+.image img {
+    width: 100%;
+    border-radius: 20px;
+}
 
+.cards {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    min-width: 250px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+    color: #a62b2b;
+}
+
+@media (max-width: 768px) {
     .hero {
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      gap: 34px;
-      align-items: stretch;
+        flex-direction: column;
     }
 
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 36px;
-      box-shadow: var(--shadow);
+    .text h1 {
+        font-size: 40px;
     }
-
-    .hero-copy {
-      padding: 72px 68px;
-      min-height: 610px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    h1 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(82px, 8vw, 142px);
-      line-height: 0.93;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      font-weight: 600;
-    }
-
-    .sub {
-      margin-top: 20px;
-      font-size: 13px;
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
-      color: var(--soft-accent);
-    }
-
-    .lead {
-      margin-top: 52px;
-      max-width: 720px;
-      font-size: 20px;
-      line-height: 1.72;
-      color: var(--text);
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 48px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 16px 28px;
-      border-radius: 999px;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 0.24em;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 12px 26px rgba(166, 31, 40, 0.16);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      opacity: 0.95;
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--line);
-      color: var(--accent);
-      background: transparent;
-    }
-
-    .btn-secondary:hover {
-      background: #fbefef;
-    }
-
-    .image-box {
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-      border-radius: 36px;
-      box-shadow: var(--shadow);
-      min-height: 610px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px 24px 18px;
-    }
-
-    .image-box::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, rgba(255,255,255,0.28), transparent 40%);
-      pointer-events: none;
-    }
-
-    .image-box img {
-      position: relative;
-      z-index: 1;
-      width: 86%;
-      max-width: 760px;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      filter: grayscale(100%) contrast(1.08) brightness(1.03);
-      transform: translateX(28px) translateY(8px);
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 34px;
-    }
-
-    .panel {
-      background: rgba(252,247,247,0.92);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 34px 30px;
-      box-shadow: 0 10px 28px rgba(123, 59, 65, 0.04);
-    }
-
-    .panel h3 {
-      margin: 0 0 18px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 28px;
-      line-height: 1.1;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .panel p {
-      margin: 0;
-      font-size: 17px;
-      line-height: 1.58;
-      color: var(--text);
-    }
-
-    .footer {
-      margin-top: 42px;
-      border-top: 1px solid var(--line);
-      padding-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.28em;
-      color: var(--soft-accent);
-    }
-
-    @media (max-width: 1100px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-copy,
-      .image-box {
-        min-height: auto;
-      }
-
-      .image-box {
-        padding: 30px 20px 8px;
-      }
-
-      .image-box img {
-        width: 80%;
-        transform: translateX(14px) translateY(8px);
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .container {
-        padding: 28px 16px 60px;
-      }
-
-      .hero-copy {
-        padding: 42px 28px;
-      }
-
-      h1 {
-        font-size: 62px;
-      }
-
-      .lead {
-        font-size: 18px;
-        margin-top: 34px;
-      }
-
-      .brand {
-        font-size: 11px;
-        letter-spacing: 0.28em;
-      }
-
-      .nav-links {
-        gap: 18px;
-      }
-
-      .nav-links a {
-        font-size: 11px;
-        letter-spacing: 0.22em;
-      }
-
-      .image-box img {
-        width: 92%;
-        transform: translateX(8px) translateY(6px);
-      }
-
-      .panel {
-        padding: 28px 24px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
-  <div class="container">
 
-    <div class="nav">
-      <div class="logo-wrap">
-        <img src="logo.png" alt="EMARA Logo" />
-        <div class="brand">EMARA Architektur</div>
-      </div>
+<div class="container">
 
-      <div class="nav-links">
-        <a href="#about">Über mich</a>
-        <a href="#focus">Fokus</a>
-        <a href="https://instagram.com/emara.architektur" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </div>
-    </div>
+    <div class="hero">
+        <div class="text">
+            <h1>EMARA</h1>
+            <p>Architekturstudentin mit Fokus auf Entwurf, Konzept und nachhaltige Gestaltung.</p>
 
-    <section class="hero">
-      <div class="card hero-copy">
-        <h1>EMARA</h1>
-        <div class="sub">Architekturstudentin</div>
-
-        <p class="lead">
-          Ich entwerfe Räume, die Menschen berühren – so, wie mich der Entwurfsprozess selbst begeistert.
-        </p>
-
-        <div class="button-row">
-          <a class="btn btn-primary" href="https://instagram.com/emara.architektur" target="_blank" rel="noopener noreferrer">
-            Instagram ansehen
-          </a>
-          <a class="btn btn-secondary" href="#about">
-            Mehr
-          </a>
+            <div class="buttons">
+                <button class="btn btn-primary">Instagram</button>
+                <button class="btn btn-secondary">Mehr</button>
+            </div>
         </div>
-      </div>
 
-      <div class="image-box">
-        <img src="emma-stuhl.jpg" alt="Emma Rauwolf auf einem Sessel" />
-      </div>
-    </section>
-
-    <section class="info-grid" id="about">
-      <div class="panel">
-        <h3>Über mich</h3>
-        <p>
-          Architekturstudentin mit Fokus auf Entwurf und Gestaltung.
-        </p>
-      </div>
-
-      <div class="panel" id="focus">
-        <h3>Fokus</h3>
-        <p>
-          Entwurf · Konzept · Wohnbau · Nachhaltigkeit · öffentliche Gebäude
-        </p>
-      </div>
-
-      <div class="panel">
-        <h3>Standort</h3>
-        <p>
-          Augsburg / Rosenheim
-        </p>
-      </div>
-    </section>
-
-    <div class="footer">
-      <span>EMARA</span>
-      <span>Architektur</span>
-      <span>2026</span>
+        <div class="image">
+            <img src="emma-stuhl.jpg">
+        </div>
     </div>
 
-  </div>
+    <div class="cards">
+        <div class="card">
+            <h3>Über mich</h3>
+            <p>Ich entwerfe Räume, die Menschen berühren und funktional überzeugen.</p>
+        </div>
+
+        <div class="card">
+            <h3>Fokus</h3>
+            <p>Wohnbau · Nachhaltigkeit · Öffentliche Gebäude</p>
+        </div>
+
+        <div class="card">
+            <h3>Standort</h3>
+            <p>Augsburg / Rosenheim</p>
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>
