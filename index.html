@@ -1,68 +1,420 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EMARA Architektur</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
+    :root {
+      --bg: #f8eeee;
+      --panel: #fff8f8;
+      --panel-2: #f4e3e4;
+      --text: #704046;
+      --accent: #9e1f24;
+      --soft-accent: #a23840;
+      --line: #dfbec0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f7ecec;
-      color: #2b2b2b;
-      text-align: center;
+      background: linear-gradient(180deg, #fbf4f4 0%, var(--bg) 100%);
+      color: var(--text);
     }
 
     .container {
-      padding: 80px 20px;
-      max-width: 900px;
-      margin: auto;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 12px 0 28px;
+      margin-bottom: 44px;
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: var(--soft-accent);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--soft-accent);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.6;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      box-shadow: 0 10px 30px rgba(120, 65, 69, 0.06);
+    }
+
+    .hero-copy {
+      background: linear-gradient(135deg, var(--panel) 0%, #f6e7e8 100%);
+      padding: 56px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 22px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.6);
+      color: var(--soft-accent);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
     }
 
     h1 {
-      font-size: 42px;
-      letter-spacing: 2px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--accent);
+      font-size: clamp(58px, 9vw, 112px);
+      line-height: 0.95;
+      letter-spacing: 0.08em;
+      font-weight: 500;
     }
 
-    p {
-      font-size: 18px;
-      margin-top: 20px;
-      line-height: 1.6;
+    .sub {
+      margin-top: 12px;
+      color: var(--soft-accent);
+      font-size: 13px;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--accent);
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.08;
+      font-weight: 500;
+    }
+
+    .lead {
+      margin-top: 28px;
+      max-width: 720px;
+      font-size: 20px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 40px;
-      padding: 12px 24px;
-      border: 1px solid #000;
+      padding: 14px 24px;
+      border-radius: 999px;
       text-decoration: none;
-      color: #000;
-      border-radius: 30px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      transition: 0.2s ease;
     }
 
+    .btn-primary {
+      background: var(--accent);
+      color: #fff7f7;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn-secondary {
+      color: var(--accent);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.55);
+    }
+
+    .btn-secondary:hover {
+      background: #f6e6e7;
+    }
+
+    .hero-visual {
+      background: linear-gradient(180deg, #f3e1e2 0%, var(--panel-2) 100%);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .photo-wrap {
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: #f8eded;
+      min-height: 420px;
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: grayscale(100%);
+    }
+
+    .mini-logo {
+      width: 86px;
+      height: 86px;
+      border: 1px solid #c86a6f;
+      border-radius: 50%;
+      position: relative;
+      margin-top: 20px;
+      background: rgba(255,255,255,0.45);
+    }
+
+    .mini-logo .center {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      width: 2px;
+      height: 38px;
+      transform: translateX(-50%);
+      background: var(--accent);
+    }
+
+    .mini-logo .left,
+    .mini-logo .right {
+      position: absolute;
+      bottom: 16px;
+      width: 2px;
+      height: 20px;
+      background: var(--accent);
+    }
+
+    .mini-logo .left {
+      left: 24px;
+    }
+
+    .mini-logo .right {
+      right: 24px;
+    }
+
+    .mini-logo .diag-left,
+    .mini-logo .diag-right {
+      position: absolute;
+      top: 38px;
+      width: 22px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .mini-logo .diag-left {
+      left: 24px;
+      transform: rotate(36deg);
+      transform-origin: left center;
+    }
+
+    .mini-logo .diag-right {
+      right: 24px;
+      transform: rotate(-36deg);
+      transform-origin: right center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 28px;
+      margin-bottom: 18px;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.45);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 10px 24px rgba(120, 65, 69, 0.05);
+      padding: 28px;
+    }
+
+    .panel-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--soft-accent);
+    }
+
+    .panel h3 {
+      margin: 14px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--accent);
+      font-size: 28px;
+      font-weight: 500;
+    }
+
+    .muted {
+      margin-top: 14px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .footer {
+      margin-top: 18px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--soft-accent);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding: 34px;
+      }
+
+      .lead {
+        font-size: 18px;
+      }
+
+      .photo-wrap {
+        min-height: 320px;
+      }
+    }
   </style>
 </head>
-
 <body>
-
   <div class="container">
-    <h1>EMARA</h1>
-    <p><strong>Architektur Studentin</strong></p>
+    <nav class="nav">
+      <div class="brand">EMARA Architektur</div>
+      <div class="nav-links">
+        <a href="#about">Über mich</a>
+        <a href="#focus">Fokus</a>
+        <a href="https://instagram.com/emara.architektur" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </nav>
 
-    <p>
-      Entwurf · Konzept · Design  
-    </p>
+    <section class="hero">
+      <div class="card hero-copy">
+        <span class="eyebrow">Entwurf · Konzept · Design</span>
+        <h1>EMARA</h1>
+        <div class="sub">Architekturstudentin</div>
 
-    <p>
-      Ich entwerfe Räume, die Menschen berühren –  
-      so, wie mich der Entwurfsprozess selbst begeistert.
-    </p>
+        <p class="lead">
+          Ich entwerfe Räume, die Menschen berühren – so, wie mich der Entwurfsprozess selbst begeistert.
+        </p>
 
-    <a class="btn" href="https://instagram.com/emara.architektur">
-      Instagram ansehen
-    </a>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://instagram.com/emara.architektur" target="_blank" rel="noopener noreferrer">
+            Instagram ansehen
+          </a>
+          <a class="btn btn-secondary" href="#about">
+            Mehr erfahren
+          </a>
+        </div>
+      </div>
+
+      <div class="card hero-visual">
+        <div class="photo-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1200&q=80"
+            alt="Minimalistischer architektonischer Innenraum"
+          />
+        </div>
+
+        <div class="mini-logo" aria-hidden="true">
+          <span class="center"></span>
+          <span class="left"></span>
+          <span class="right"></span>
+          <span class="diag-left"></span>
+          <span class="diag-right"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" id="about">
+      <article class="panel">
+        <div class="panel-label">Über mich</div>
+        <h3>Architekturstudentin</h3>
+        <p class="muted">
+          Mit einem Blick für Klarheit, Atmosphäre und Komposition entwickle ich Entwürfe,
+          die ruhig, präzise und emotional wirken.
+        </p>
+      </article>
+
+      <article class="panel" id="focus">
+        <div class="panel-label">Fokus</div>
+        <h3>Entwurf & Konzept</h3>
+        <p class="muted">
+          Entwurf · Konzept · Wohnbau · Nachhaltigkeit · öffentliche Gebäude
+        </p>
+      </article>
+
+      <article class="panel">
+        <div class="panel-label">Standort</div>
+        <h3>Augsburg / Rosenheim</h3>
+        <p class="muted">
+          Instagram: @emara.architektur<br />
+          Website im Aufbau
+        </p>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <span>EMARA Architektur</span>
+      <span>Architekturstudentin</span>
+      <span>Augsburg / Rosenheim</span>
+    </footer>
   </div>
-
 </body>
 </html>
