@@ -3,48 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>EMARA Architektur</title>
-
-  <!-- Social Preview -->
-  <meta property="og:title" content="EMARA Architektur">
-  <meta property="og:description" content="Architektur Portfolio – Entwurf · Konzept · Design">
-  <meta property="og:image" content="https://emara-architektur.github.io/emara-architektur/logo.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://emara-architektur.github.io/emara-architektur/">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EMARA Architektur">
-  <meta name="twitter:description" content="Architektur Portfolio – Entwurf · Konzept · Design">
-  <meta name="twitter:image" content="https://emara-architektur.github.io/emara-architektur/logo.png">
-
-  <link rel="icon" href="logo.png">
+  <title>Emma Rauwolf Architektur</title>
+  <meta name="description" content="Architektur mit Atmosphäre, Klarheit und Freude am Entwurf – Portfolio von Emma Rauwolf Architektur." />
 
   <style>
     :root {
       --bg: #f8eeef;
       --bg-soft: #fcf7f7;
-      --panel: #fff9fa;
-      --panel-2: #f5e3e6;
+      --panel: rgba(255, 249, 250, 0.88);
+      --panel-strong: rgba(255, 249, 250, 0.96);
       --text: #6f454a;
       --muted: #9b6b72;
       --accent: #a51f28;
       --line: #e6cfd3;
+      --white: #ffffff;
       --shadow: 0 18px 46px rgba(126, 69, 75, 0.08);
       --radius-xl: 34px;
       --radius-lg: 24px;
       --radius-md: 16px;
-      --max: 1280px;
+      --max: 1380px;
+      --nav-height: 92px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: "Helvetica Neue", Arial, sans-serif;
@@ -52,61 +34,93 @@
       background:
         radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 28%),
         linear-gradient(180deg, #fdf8f8 0%, var(--bg) 100%);
+      overflow-x: hidden;
     }
 
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
 
     .container {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 32px 22px 84px;
+      padding: 0 24px 90px;
     }
 
-    /* Header */
     .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(248, 238, 239, 0.72);
+      border-bottom: 1px solid rgba(230, 207, 211, 0.8);
+    }
+
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      min-height: var(--nav-height);
+      padding: 18px 24px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 24px;
-      padding: 10px 0 26px;
-      margin-bottom: 38px;
-      border-bottom: 1px solid var(--line);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
       min-width: 0;
     }
 
-    .brand-logo {
-      width: 62px;
-      height: 62px;
-      object-fit: contain;
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 1.5px solid var(--accent);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      position: relative;
       flex-shrink: 0;
-      mix-blend-mode: multiply;
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 18px;
+      background: var(--accent);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.85;
+    }
+
+    .brand-mark span {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      gap: 12px;
+      transform: translateX(-1px);
     }
 
     .brand-name {
       color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 0.34em;
-      font-size: 13px;
-      line-height: 1.3;
+      letter-spacing: 0.28em;
+      font-size: 12px;
+      line-height: 1.45;
       white-space: nowrap;
     }
 
     .nav {
       display: flex;
+      align-items: center;
       gap: 26px;
       flex-wrap: wrap;
       justify-content: flex-end;
@@ -115,190 +129,15 @@
     .nav a {
       color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 13px;
-      opacity: 0.95;
-      transition: opacity 0.18s ease;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      opacity: 0.92;
+      transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
-    .nav a:hover {
-      opacity: 0.62;
-    }
+    .nav a:hover { opacity: 0.62; transform: translateY(-1px); }
 
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      gap: 34px;
-      align-items: stretch;
-    }
-
-    .card,
-    .image-panel,
-    .info-card,
-    .news-card,
-    .about-card,
-    .contact-card,
-    .project-button,
-    .project-detail {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-    }
-
-    .card {
-      background: linear-gradient(135deg, var(--panel) 0%, var(--bg-soft) 100%);
-      padding: 74px 66px;
-      min-height: 620px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      width: fit-content;
-      padding: 10px 18px;
-      margin-bottom: 28px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.66);
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-size: 11px;
-    }
-
-    .hero-title {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(78px, 8vw, 142px);
-      line-height: 0.92;
-      letter-spacing: 0.06em;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .hero-subtitle {
-      margin: 18px 0 0;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.34em;
-      font-size: 13px;
-    }
-
-    .hero-text {
-      margin: 44px 0 0;
-      max-width: 650px;
-      font-size: 20px;
-      line-height: 1.72;
-      color: var(--text);
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 44px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 54px;
-      padding: 0 26px;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 13px;
-      font-weight: 700;
-      transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      opacity: 0.96;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      border: 1px solid var(--accent);
-      box-shadow: 0 14px 28px rgba(165, 31, 40, 0.15);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--accent);
-      border: 1px solid var(--line);
-    }
-
-    .btn-secondary:hover {
-      background: #fbefef;
-    }
-
-    /* Bild rechts angepasst */
-    .image-panel {
-      background: #fdf8f8;
-      min-height: 620px;
-      padding: 0;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: stretch;
-      justify-content: stretch;
-    }
-
-    .image-panel::before {
-      display: none;
-    }
-
-    .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 38%;
-      filter: grayscale(100%) contrast(1.04) brightness(1.02);
-      border-radius: 0;
-      display: block;
-    }
-
-    /* Info cards */
-    .info-grid {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .info-card {
-      background: rgba(255, 250, 251, 0.92);
-      padding: 32px 28px;
-      min-height: 200px;
-    }
-
-    .info-card h3 {
-      margin: 0 0 18px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 28px;
-      line-height: 1.08;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .info-card p {
-      margin: 0;
-      font-size: 17px;
-      line-height: 1.62;
-      color: var(--text);
-    }
-
-    /* Shared section styles */
-    .section {
-      margin-top: 86px;
-    }
-
+    .section { margin-top: 110px; }
     .section-label {
       display: inline-block;
       margin-bottom: 14px;
@@ -307,222 +146,325 @@
       letter-spacing: 0.26em;
       font-size: 12px;
     }
-
     .section h2 {
-      margin: 0 0 26px;
+      margin: 0 0 28px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 44px;
+      font-size: 48px;
+      line-height: 1.05;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .hero {
+      min-height: calc(100vh - var(--nav-height));
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      align-items: stretch;
+      gap: 28px;
+      padding-top: 28px;
+    }
+
+    .hero-card,
+    .hero-portrait,
+    .about-card,
+    .contact-card,
+    .project-card,
+    .project-modal-panel,
+    .quote-panel,
+    .philosophy-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 70px 64px 58px;
+      background: linear-gradient(135deg, var(--panel-strong) 0%, var(--bg-soft) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 0.08s;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      padding: 10px 18px;
+      margin-bottom: 28px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.68);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 11px;
+    }
+
+    .hero-title {
+      margin: 0;
+      max-width: 820px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 5.2vw, 78px);
+      line-height: 1.08;
       color: var(--accent);
       font-weight: 600;
     }
 
-    /* News */
-    .news-list {
-      display: grid;
-      gap: 18px;
+    .hero-text {
+      margin: 26px 0 0;
+      max-width: 720px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
     }
 
-    .news-card {
-      background: var(--panel);
-      padding: 24px 26px;
+    .hero-meta {
+      margin-top: 36px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
-    .news-date {
-      margin-bottom: 10px;
-      color: var(--muted);
+    .meta-pill {
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.56);
+      color: var(--accent);
       font-size: 12px;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
-    .news-title {
-      font-size: 22px;
-      color: var(--accent);
-      font-family: Georgia, "Times New Roman", serif;
-      margin-bottom: 10px;
-    }
-
-    .news-text {
-      font-size: 17px;
-      line-height: 1.6;
-    }
-
-    /* Projects */
-    .project-list {
-      display: grid;
-      gap: 18px;
-    }
-
-    .project-entry {
-      display: grid;
-      gap: 12px;
-    }
-
-    .project-button {
-      width: 100%;
-      text-align: left;
-      background: var(--panel);
-      padding: 24px 26px;
-      cursor: pointer;
-      border: 1px solid var(--line);
-      transition: transform 0.18s ease, background 0.18s ease;
-      color: var(--text);
-      font: inherit;
-    }
-
-    .project-button:hover {
-      transform: translateX(4px);
-      background: var(--panel-2);
-    }
-
-    .project-button.active {
-      background: var(--panel-2);
-    }
-
-    .project-button-row {
+    .button-row {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 36px;
     }
 
-    .project-title {
-      font-size: 19px;
-      line-height: 1.45;
-    }
-
-    .project-number {
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      margin-right: 10px;
-    }
-
-    .project-plus {
-      color: var(--accent);
-      font-size: 28px;
-      line-height: 1;
-      flex-shrink: 0;
-    }
-
-    .project-detail {
-      display: none;
-      background: linear-gradient(135deg, var(--panel) 0%, var(--bg-soft) 100%);
-      padding: 28px;
-    }
-
-    .project-detail.open {
-      display: block;
-      animation: fadeIn 0.25s ease;
-    }
-
-    .project-detail-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .project-meta h3 {
-      margin: 0 0 12px;
-      color: var(--accent);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 28px;
-    }
-
-    .project-meta p {
-      margin: 0 0 14px;
-      font-size: 17px;
-      line-height: 1.65;
-    }
-
-    .project-facts {
-      display: grid;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .project-fact {
-      padding: 14px 16px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,0.65);
-      font-size: 15px;
-    }
-
-    .project-image-placeholder {
-      border: 1px dashed var(--line);
-      border-radius: 22px;
-      background: #fff;
-      min-height: 320px;
-      display: flex;
+    .btn {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      color: var(--muted);
-      padding: 28px;
-      font-size: 16px;
-      line-height: 1.6;
+      min-height: 56px;
+      padding: 0 26px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+      cursor: pointer;
     }
 
-    /* About */
-    .about-grid {
+    .btn:hover { transform: translateY(-1px); opacity: 0.96; }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+      box-shadow: 0 14px 28px rgba(165, 31, 40, 0.16);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--line);
+    }
+
+    .hero-portrait {
+      position: relative;
+      overflow: hidden;
+      min-height: 760px;
+      background: #fdf8f8;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 0.18s;
+    }
+
+    .hero-portrait::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(111,69,74,0.08));
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      transform: scale(1.03);
+      transition: transform 1.8s ease;
+      filter: grayscale(100%) contrast(1.04) brightness(1.02);
+    }
+
+    .hero:hover .hero-portrait img { transform: scale(1.06); }
+
+    .intro-grid {
+      margin-top: 28px;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 22px;
+      align-items: stretch;
     }
 
-    .about-card {
-      background: var(--panel);
+    .philosophy-card,
+    .quote-panel {
+      background: rgba(255, 250, 251, 0.9);
       padding: 30px 28px;
     }
 
-    .about-card h3 {
+    .philosophy-card h3,
+    .quote-panel h3,
+    .about-card h3,
+    .contact-card h3,
+    .project-modal-meta h3 {
       margin: 0 0 16px;
       font-family: Georgia, "Times New Roman", serif;
       font-size: 28px;
       color: var(--accent);
+      font-weight: 600;
     }
 
+    .philosophy-card p,
+    .quote-panel p,
     .about-card p,
-    .about-card li {
+    .contact-card p {
+      margin: 0;
       font-size: 17px;
-      line-height: 1.65;
-      margin: 0;
+      line-height: 1.72;
     }
 
-    .about-card ul {
-      margin: 0;
-      padding-left: 18px;
+    .quote-text {
+      position: relative;
+      padding-left: 28px;
     }
 
-    .cv-button {
-      margin-top: 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 24px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: white;
-      border: 1px solid var(--accent);
-      font-size: 13px;
-      font-weight: 700;
+    .quote-text::before {
+      content: "“";
+      position: absolute;
+      left: 0;
+      top: -6px;
+      font-family: Georgia, serif;
+      font-size: 56px;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      background: #f7efef;
+      cursor: pointer;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .project-card.large { grid-column: span 7; }
+    .project-card.medium { grid-column: span 5; }
+    .project-card.small { grid-column: span 4; }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 56px rgba(126, 69, 75, 0.14);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.9s ease;
+      filter: saturate(0.9) contrast(1.01);
+    }
+
+    .project-card:hover img { transform: scale(1.05); }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02) 18%, rgba(65,25,29,0.56) 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 26px;
+    }
+
+    .project-overlay-inner {
+      transform: translateY(8px);
+      transition: transform 0.32s ease, opacity 0.32s ease;
+      opacity: 0.96;
+      color: #fff;
+    }
+
+    .project-card:hover .project-overlay-inner {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .project-category {
+      font-size: 11px;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      opacity: 0.86;
+      margin-bottom: 10px;
     }
 
-    /* Contact */
+    .project-name {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      line-height: 1.08;
+      margin-bottom: 8px;
+    }
+
+    .project-caption {
+      font-size: 15px;
+      line-height: 1.55;
+      max-width: 540px;
+      opacity: 0.92;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .about-card,
     .contact-card {
-      background: linear-gradient(135deg, var(--panel) 0%, var(--bg-soft) 100%);
-      padding: 30px 28px;
+      background: rgba(255, 249, 250, 0.92);
+      padding: 32px 28px;
+    }
+
+    .about-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .about-item {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.58);
+      font-size: 15px;
+      line-height: 1.5;
     }
 
     .contact-links {
       display: grid;
       gap: 14px;
-      margin-top: 12px;
+      margin-top: 16px;
     }
 
     .contact-link {
@@ -530,12 +472,12 @@
       border-radius: var(--radius-md);
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.6);
-      font-size: 17px;
+      font-size: 16px;
+      line-height: 1.5;
     }
 
-    /* Footer */
     .footer {
-      margin-top: 66px;
+      margin-top: 72px;
       padding-top: 20px;
       border-top: 1px solid var(--line);
       display: flex;
@@ -548,549 +490,538 @@
       text-transform: uppercase;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .project-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(62, 31, 34, 0.52);
+      backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 26px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+      z-index: 100;
     }
 
-    /* Tablet */
-    @media (max-width: 1024px) {
+    .project-modal.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .project-modal-panel {
+      width: min(1180px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      background: linear-gradient(180deg, rgba(255,250,251,0.98) 0%, rgba(252,247,247,0.98) 100%);
+      padding: 28px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: sticky;
+      top: 0;
+      margin-left: auto;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.88);
+      color: var(--accent);
+      font-size: 22px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+    }
+
+    .project-modal-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    .project-modal-gallery {
+      display: grid;
+      gap: 14px;
+    }
+
+    .project-modal-gallery img {
+      width: 100%;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      object-fit: cover;
+      min-height: 220px;
+      max-height: 440px;
+    }
+
+    .project-modal-meta {
+      padding: 12px 8px 12px 10px;
+    }
+
+    .project-modal-kicker {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      margin-bottom: 12px;
+    }
+
+    .project-modal-meta p {
+      margin: 0 0 18px;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .project-facts {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .project-fact {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.68);
+      font-size: 15px;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1080px) {
       .hero,
+      .intro-grid,
       .about-grid,
-      .project-detail-grid {
+      .project-modal-grid {
         grid-template-columns: 1fr;
       }
 
-      .card,
-      .image-panel {
-        min-height: auto;
-      }
-
-      .image-panel {
-        min-height: 520px;
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .site-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav {
-        gap: 16px;
-      }
+      .hero-portrait { min-height: 560px; }
+      .project-card.large,
+      .project-card.medium,
+      .project-card.small { grid-column: span 12; }
+      .nav { gap: 16px; }
+      .header-inner { align-items: flex-start; flex-direction: column; }
     }
 
-    /* Mobile / iPhone */
     @media (max-width: 640px) {
-      .container {
-        padding: 18px 14px 52px;
-      }
-
-      .site-header {
-        gap: 14px;
-        padding-bottom: 18px;
-        margin-bottom: 24px;
-      }
-
-      .brand {
-        gap: 12px;
-        align-items: center;
-      }
-
-      .brand-logo {
-        width: 48px;
-        height: 48px;
-      }
-
+      :root { --nav-height: 84px; }
+      .container { padding: 0 14px 56px; }
+      .header-inner { padding: 16px 14px; }
       .brand-name {
-        font-size: 12px;
+        font-size: 11px;
         letter-spacing: 0.14em;
         white-space: normal;
-        line-height: 1.35;
       }
-
-      .nav {
-        width: 100%;
-        gap: 10px 14px;
-      }
-
-      .nav a {
-        font-size: 12px;
-        letter-spacing: 0.12em;
-      }
-
-      .hero {
-        gap: 18px;
-      }
-
-      .card {
-        padding: 30px 22px;
-        min-height: auto;
-        border-radius: 24px;
-      }
-
-      .eyebrow {
-        font-size: 10px;
-        padding: 8px 14px;
-        margin-bottom: 18px;
-      }
-
-      .hero-title {
-        font-size: 64px;
-        line-height: 0.95;
-      }
-
-      .hero-subtitle {
-        margin-top: 12px;
-        font-size: 12px;
-        letter-spacing: 0.18em;
-      }
-
-      .hero-text {
-        margin-top: 26px;
-        font-size: 17px;
-        line-height: 1.58;
-      }
-
-      .button-row {
-        margin-top: 28px;
-        gap: 12px;
-        flex-direction: column;
-      }
-
-      .btn,
-      .cv-button {
-        width: 100%;
-        min-height: 50px;
-        font-size: 13px;
-      }
-
-      .image-panel {
-        min-height: 420px;
-        padding: 0;
-        border-radius: 24px;
-        overflow: hidden;
-      }
-
-      .hero-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center 34%;
-        border-radius: 0;
-      }
-
-      .info-grid {
-        margin-top: 18px;
-        gap: 16px;
-      }
-
-      .info-card,
-      .news-card,
-      .project-button,
-      .project-detail,
+      .nav { width: 100%; gap: 10px 14px; }
+      .nav a { font-size: 11px; letter-spacing: 0.12em; }
+      .hero { gap: 18px; padding-top: 18px; }
+      .hero-card { padding: 30px 22px; border-radius: 24px; }
+      .hero-eyebrow { font-size: 10px; padding: 8px 14px; margin-bottom: 18px; }
+      .hero-title { font-size: 34px; line-height: 1.16; }
+      .hero-text { font-size: 16px; line-height: 1.66; margin-top: 18px; }
+      .hero-meta { margin-top: 26px; gap: 10px; }
+      .meta-pill { font-size: 11px; padding: 10px 14px; }
+      .button-row { margin-top: 24px; gap: 12px; flex-direction: column; }
+      .btn { width: 100%; min-height: 50px; }
+      .hero-portrait { min-height: 420px; border-radius: 24px; }
+      .section { margin-top: 62px; }
+      .section h2 { font-size: 34px; margin-bottom: 18px; }
+      .philosophy-card,
+      .quote-panel,
       .about-card,
-      .contact-card {
-        padding: 22px 18px;
-        min-height: auto;
-        border-radius: 20px;
-      }
-
-      .info-card h3,
+      .contact-card,
+      .project-modal-panel { padding: 22px 18px; border-radius: 22px; }
+      .philosophy-card h3,
+      .quote-panel h3,
       .about-card h3,
-      .project-meta h3 {
-        font-size: 24px;
-        margin-bottom: 14px;
-      }
-
-      .info-card p,
+      .contact-card h3,
+      .project-modal-meta h3 { font-size: 24px; }
+      .projects-grid { gap: 14px; }
+      .project-card { min-height: 280px; }
+      .project-overlay { padding: 18px; }
+      .project-name { font-size: 24px; }
+      .project-caption,
+      .philosophy-card p,
+      .quote-panel p,
       .about-card p,
-      .about-card li,
-      .news-text,
-      .contact-link,
-      .project-meta p {
-        font-size: 16px;
-      }
-
-      .section {
-        margin-top: 56px;
-      }
-
-      .section-label {
-        font-size: 11px;
-      }
-
-      .section h2 {
-        font-size: 32px;
-        margin-bottom: 18px;
-      }
-
-      .project-list,
-      .news-list {
-        gap: 14px;
-      }
-
-      .project-title {
-        font-size: 16px;
-      }
-
-      .news-title {
-        font-size: 20px;
-      }
-
-      .project-image-placeholder {
-        min-height: 220px;
-        font-size: 15px;
-      }
-
-      .footer {
-        margin-top: 42px;
-        padding-top: 16px;
-        font-size: 11px;
-        letter-spacing: 0.1em;
-      }
+      .contact-card p,
+      .project-modal-meta p { font-size: 16px; }
+      .project-modal { padding: 14px; }
+      .footer { font-size: 11px; letter-spacing: 0.1em; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-
-    <header class="site-header">
-      <div class="brand">
-        <img src="logo.png" alt="EMARA Logo" class="brand-logo" />
-        <div class="brand-name">EMARA Architektur</div>
-      </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#top" class="brand" aria-label="Emma Rauwolf Architektur Startseite">
+        <div class="brand-mark" aria-hidden="true"><span>E R</span></div>
+        <div class="brand-name">Emma Rauwolf<br />Architektur</div>
+      </a>
 
       <nav class="nav">
-        <a href="#new">New</a>
-        <a href="#projects">Projekte</a>
+        <a href="#projekte">Projekte</a>
         <a href="#about">Über mich</a>
         <a href="#contact">Kontakt</a>
-        <a href="https://instagram.com/emara.architektur" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://instagram.com/emma.rauwolf" target="_blank" rel="noopener noreferrer">Instagram</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
+  <main class="container" id="top">
     <section class="hero">
-      <div class="card">
-        <div class="eyebrow">Entwurf · Konzept · Design</div>
-
-        <h1 class="hero-title">EMARA</h1>
-        <div class="hero-subtitle">Architekturstudentin</div>
-
+      <div class="hero-card">
+        <div class="hero-eyebrow">Emma Rauwolf Architektur</div>
+        <h1 class="hero-title">„Ich möchte, dass die Menschen, die meine zukünftigen Gebäude betreten, das gleiche Lächeln und die gleiche Freude spüren, die ich beim Entwerfen empfinde.“</h1>
         <p class="hero-text">
-          Ich entwerfe Räume, die Menschen berühren – so, wie mich der Entwurfsprozess selbst begeistert.
+          Eine moderne, minimalistische und gleichzeitig emotionale Architekturmarke – mit Fokus auf Atmosphäre, Klarheit und starke räumliche Wirkung.
         </p>
+
+        <div class="hero-meta">
+          <div class="meta-pill">Entwurf</div>
+          <div class="meta-pill">Konzept</div>
+          <div class="meta-pill">Atmosphäre</div>
+          <div class="meta-pill">Raum</div>
+        </div>
 
         <div class="button-row">
-          <a class="btn btn-primary" href="https://instagram.com/emara.architektur" target="_blank" rel="noopener noreferrer">
-            Instagram ansehen
-          </a>
-          <a class="btn btn-secondary" href="#projects">
-            Mehr
-          </a>
+          <a class="btn btn-primary" href="#projekte">Projekte ansehen</a>
+          <a class="btn btn-secondary" href="#about">Über mich</a>
         </div>
       </div>
 
-      <div class="image-panel">
-        <img src="stuhlbild.jpg" alt="Emma Rauwolf auf einem Sessel" class="hero-image" />
+      <div class="hero-portrait">
+        <img src="stuhlbild.jpg" alt="Porträt von Emma Rauwolf" />
       </div>
     </section>
 
-    <section class="info-grid">
-      <div class="info-card">
-        <h3>Kurzprofil</h3>
+    <section class="intro-grid" data-reveal>
+      <div class="philosophy-card">
+        <h3>Architektur mit Haltung</h3>
         <p>
-          Architekturstudentin mit Fokus auf Entwurf, Gestaltung und konzeptionelles Denken.
+          Die bestehende Gestaltung deiner Website bleibt bewusst erhalten: weiche Rosé-Töne, viel Weißraum, ruhige Typografie und ein klarer, hochwertiger Gesamtauftritt. Inhaltlich wird sie jedoch stärker in Richtung eines internationalen Architekturportfolios geschärft – bildorientiert, reduziert und emotional.
         </p>
       </div>
-
-      <div class="info-card">
-        <h3>Fokus</h3>
-        <p>
-          Entwurf · Konzept · Wohnbau · Nachhaltigkeit · Öffentliche Gebäude
-        </p>
-      </div>
-
-      <div class="info-card">
-        <h3>Standort</h3>
-        <p>
-          Augsburg / Rosenheim
+      <div class="quote-panel">
+        <h3>Markenwirkung</h3>
+        <p class="quote-text">
+          Die Website soll nicht wie ein Studentenportfolio wirken, sondern wie das digitale Zuhause eines jungen, klar positionierten Architekturbüros – ruhig, präzise und professionell.
         </p>
       </div>
     </section>
 
-    <section class="section" id="new">
-      <div class="section-label">Aktuell</div>
-      <h2>New</h2>
-
-      <div class="news-list">
-        <div class="news-card">
-          <div class="news-date">April 2026</div>
-          <div class="news-title">Aktuelle Arbeiten & Einblicke</div>
-          <div class="news-text">
-            Hier kannst du künftig neue Entwürfe, Modelle, Renderings, Wettbewerbe oder laufende Projekte posten.
-          </div>
-        </div>
-
-        <div class="news-card">
-          <div class="news-date">Platzhalter</div>
-          <div class="news-title">Neues Projekt oder Update</div>
-          <div class="news-text">
-            Zum Beispiel: „Neuer Entwurf für die Vogelbeobachtungsstation“, „Modellbau Eventpavillon“ oder „Finale Präsentation Grünes Forum“.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
+    <section class="section" id="projekte" data-reveal>
       <div class="section-label">Portfolio</div>
-      <h2>Projekte</h2>
+      <h2>Ausgewählte Projekte</h2>
 
-      <div class="project-list">
-
-        <div class="project-entry">
-          <button class="project-button" type="button" onclick="toggleProject('p1', this)">
-            <div class="project-button-row">
-              <div class="project-title"><span class="project-number">01</span>Vogelbeobachtungsstation</div>
-              <div class="project-plus">+</div>
-            </div>
-          </button>
-          <div class="project-detail" id="p1">
-            <div class="project-detail-grid">
-              <div class="project-meta">
-                <h3>Vogelbeobachtungsstation</h3>
-                <p>
-                  Hier kannst du später dein Projekt beschreiben: Idee, Entwurfskonzept, Materialität, Atmosphäre und räumliche Wirkung.
-                </p>
-                <div class="project-facts">
-                  <div class="project-fact">Jahr: später ergänzen</div>
-                  <div class="project-fact">Ort: später ergänzen</div>
-                  <div class="project-fact">Typ: Beobachtungsstation / Naturraum</div>
-                </div>
-              </div>
-              <div class="project-image-placeholder">
-                Hier kannst du später 1–3 Bilder oder Renderings zu diesem Projekt einfügen.
-              </div>
+      <div class="projects-grid">
+        <article class="project-card large" data-project="vogelbeobachtungsstation">
+          <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1400&q=80" alt="Vogelbeobachtungsstation" />
+          <div class="project-overlay">
+            <div class="project-overlay-inner">
+              <div class="project-category">Naturraum · Rückzug</div>
+              <div class="project-name">Vogelbeobachtungsstation</div>
+              <div class="project-caption">Ein Entwurf zwischen Landschaft, Beobachtung und stiller räumlicher Präsenz.</div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="project-entry">
-          <button class="project-button" type="button" onclick="toggleProject('p2', this)">
-            <div class="project-button-row">
-              <div class="project-title"><span class="project-number">02</span>Eventpavillon</div>
-              <div class="project-plus">+</div>
-            </div>
-          </button>
-          <div class="project-detail" id="p2">
-            <div class="project-detail-grid">
-              <div class="project-meta">
-                <h3>Eventpavillon</h3>
-                <p>
-                  Hier kannst du später Konzept, Nutzung, Entwurfsidee und besondere Qualitäten des Pavillons beschreiben.
-                </p>
-                <div class="project-facts">
-                  <div class="project-fact">Jahr: später ergänzen</div>
-                  <div class="project-fact">Ort: später ergänzen</div>
-                  <div class="project-fact">Typ: Pavillon / Eventarchitektur</div>
-                </div>
-              </div>
-              <div class="project-image-placeholder">
-                Platz für Bilder, Modellfotos, Renderings oder Pläne.
-              </div>
+        <article class="project-card medium" data-project="eventpavillon">
+          <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1200&q=80" alt="Eventpavillon" />
+          <div class="project-overlay">
+            <div class="project-overlay-inner">
+              <div class="project-category">Temporäre Architektur</div>
+              <div class="project-name">Eventpavillon</div>
+              <div class="project-caption">Leicht, offen und atmosphärisch – ein Ort für Begegnung und Inszenierung.</div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="project-entry">
-          <button class="project-button" type="button" onclick="toggleProject('p3', this)">
-            <div class="project-button-row">
-              <div class="project-title"><span class="project-number">03</span>Grünes Forum</div>
-              <div class="project-plus">+</div>
-            </div>
-          </button>
-          <div class="project-detail" id="p3">
-            <div class="project-detail-grid">
-              <div class="project-meta">
-                <h3>Grünes Forum</h3>
-                <p>
-                  Hier kannst du später den Entwurf, das Freiraumkonzept und die Bedeutung des Projekts im städtischen Kontext erläutern.
-                </p>
-                <div class="project-facts">
-                  <div class="project-fact">Jahr: später ergänzen</div>
-                  <div class="project-fact">Ort: später ergänzen</div>
-                  <div class="project-fact">Typ: Forum / Freiraum / Öffentlichkeit</div>
-                </div>
-              </div>
-              <div class="project-image-placeholder">
-                Platzhalter für Projektbilder und Darstellungen.
-              </div>
+        <article class="project-card small" data-project="gruenes-forum">
+          <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80" alt="Grünes Forum" />
+          <div class="project-overlay">
+            <div class="project-overlay-inner">
+              <div class="project-category">Öffentlicher Raum</div>
+              <div class="project-name">Grünes Forum</div>
+              <div class="project-caption">Stadt, Freiraum und Gemeinschaft in einer klaren räumlichen Geste.</div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="project-entry">
-          <button class="project-button" type="button" onclick="toggleProject('p4', this)">
-            <div class="project-button-row">
-              <div class="project-title"><span class="project-number">04</span>Haus der Demokratie</div>
-              <div class="project-plus">+</div>
-            </div>
-          </button>
-          <div class="project-detail" id="p4">
-            <div class="project-detail-grid">
-              <div class="project-meta">
-                <h3>Haus der Demokratie</h3>
-                <p>
-                  Hier kannst du später das architektonische Konzept, die gesellschaftliche Idee und die räumliche Organisation beschreiben.
-                </p>
-                <div class="project-facts">
-                  <div class="project-fact">Jahr: später ergänzen</div>
-                  <div class="project-fact">Ort: später ergänzen</div>
-                  <div class="project-fact">Typ: Öffentliches Gebäude</div>
-                </div>
-              </div>
-              <div class="project-image-placeholder">
-                Hier können später Perspektiven, Pläne oder Modelle eingefügt werden.
-              </div>
+        <article class="project-card small" data-project="haus-der-demokratie">
+          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1000&q=80" alt="Haus der Demokratie" />
+          <div class="project-overlay">
+            <div class="project-overlay-inner">
+              <div class="project-category">Öffentliches Gebäude</div>
+              <div class="project-name">Haus der Demokratie</div>
+              <div class="project-caption">Architektur als Ort für Austausch, Offenheit und gesellschaftliche Teilhabe.</div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="project-entry">
-          <button class="project-button" type="button" onclick="toggleProject('p5', this)">
-            <div class="project-button-row">
-              <div class="project-title"><span class="project-number">05</span>Ü60 Wohnen</div>
-              <div class="project-plus">+</div>
-            </div>
-          </button>
-          <div class="project-detail" id="p5">
-            <div class="project-detail-grid">
-              <div class="project-meta">
-                <h3>Ü60 Wohnen</h3>
-                <p>
-                  Hier kannst du später die Wohnidee, Gemeinschaftsaspekte und altersgerechte Konzepte ergänzen.
-                </p>
-                <div class="project-facts">
-                  <div class="project-fact">Jahr: später ergänzen</div>
-                  <div class="project-fact">Ort: später ergänzen</div>
-                  <div class="project-fact">Typ: Wohnen / Sozialer Wohnraum</div>
-                </div>
-              </div>
-              <div class="project-image-placeholder">
-                Platz für Wohnungsgrundrisse, Renderings oder Modellfotos.
-              </div>
+        <article class="project-card medium" data-project="ue60-wohnen">
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" alt="Ü60 Wohnen" />
+          <div class="project-overlay">
+            <div class="project-overlay-inner">
+              <div class="project-category">Wohnen · Gemeinschaft</div>
+              <div class="project-name">Ü60 Wohnen</div>
+              <div class="project-caption">Ein Wohnkonzept, das Rückzug, Begegnung und Alltag in Balance bringt.</div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="project-entry">
-          <button class="project-button" type="button" onclick="toggleProject('p6', this)">
-            <div class="project-button-row">
-              <div class="project-title"><span class="project-number">06</span>Schwimmbadumnutzung</div>
-              <div class="project-plus">+</div>
-            </div>
-          </button>
-          <div class="project-detail" id="p6">
-            <div class="project-detail-grid">
-              <div class="project-meta">
-                <h3>Schwimmbadumnutzung</h3>
-                <p>
-                  Hier kannst du später die Idee der Umnutzung, den Bestand und die neue räumliche Qualität beschreiben.
-                </p>
-                <div class="project-facts">
-                  <div class="project-fact">Jahr: später ergänzen</div>
-                  <div class="project-fact">Ort: später ergänzen</div>
-                  <div class="project-fact">Typ: Bestand / Umnutzung</div>
-                </div>
-              </div>
-              <div class="project-image-placeholder">
-                Hier können später Vorher-Nachher-Darstellungen oder Entwurfsbilder ergänzt werden.
-              </div>
+        <article class="project-card large" data-project="schwimmbadumnutzung">
+          <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1400&q=80" alt="Schwimmbadumnutzung" />
+          <div class="project-overlay">
+            <div class="project-overlay-inner">
+              <div class="project-category">Bestand · Transformation</div>
+              <div class="project-name">Schwimmbadumnutzung</div>
+              <div class="project-caption">Vom Bestand zur neuen Identität – eine Umnutzung mit räumlicher Tiefe und Respekt für das Vorhandene.</div>
             </div>
           </div>
-        </div>
-
+        </article>
       </div>
     </section>
 
-    <section class="section" id="about">
+    <section class="section" id="about" data-reveal>
       <div class="section-label">Profil</div>
       <h2>Über mich</h2>
 
       <div class="about-grid">
         <div class="about-card">
-          <h3>Persönliches Profil</h3>
+          <h3>Emma Rauwolf</h3>
           <p>
-            Hier kannst du später deinen persönlichen Text einfügen: was dich an Architektur begeistert, wie du entwirfst und welche Haltung deine Projekte prägt.
+            Ich studiere Architektur und entwickle Entwürfe mit Fokus auf Atmosphäre, räumliche Klarheit und menschliches Erleben. Mich interessieren Konzepte, die funktional präzise sind und zugleich emotional wirken – ruhig, hochwertig und mit einer klaren gestalterischen Haltung.
           </p>
 
-          <a href="#" class="cv-button">Lebenslauf ansehen</a>
+          <div class="about-list">
+            <div class="about-item">Architekturstudentin mit Fokus auf Entwurf, Konzept und Raumwirkung</div>
+            <div class="about-item">Interesse an Wohnbau, öffentlichen Gebäuden, Interior und nachhaltigen Ansätzen</div>
+            <div class="about-item">Arbeitsweise: konzeptionell, bildstark, materialbewusst und atmosphärisch</div>
+          </div>
         </div>
 
         <div class="about-card">
-          <h3>Ausbildung & Skills</h3>
-          <ul>
-            <li>Architekturstudium</li>
-            <li>Entwurf & Konzeptentwicklung</li>
-            <li>Modellbau & Darstellung</li>
-            <li>Adobe / CAD / Rendering – später ergänzbar</li>
-          </ul>
+          <h3>Website-Konzept</h3>
+          <p>
+            Die Seite verbindet dein bestehendes Farbkonzept und deine Markenästhetik mit den Qualitäten internationaler Architektur-Websites: bildstarke Projektflächen, klare Typografie, ruhige Mikroanimationen, großflächige Weißräume und eine immersive Projektpräsentation mit Modal oder eigener Projektseite.
+          </p>
+
+          <div class="about-list">
+            <div class="about-item">Hero mit Vollbild-Porträt und starkem Leitspruch</div>
+            <div class="about-item">Grid-basierte Projektübersicht mit Hover-Effekten</div>
+            <div class="about-item">Responsive, schnell, minimalistisch und markenstark</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <section class="section" id="contact" data-reveal>
       <div class="section-label">Kontakt</div>
       <h2>Kontakt</h2>
 
       <div class="contact-card">
+        <h3>Zusammenarbeit, Projekte oder Rückfragen</h3>
+        <p>
+          Für Anfragen zu Projekten, Kollaborationen, Praktika oder Portfolio-Austausch kannst du mich direkt per E-Mail oder über Instagram kontaktieren.
+        </p>
+
         <div class="contact-links">
-          <a class="contact-link" href="mailto:deineemail@example.com">deineemail@example.com</a>
-          <a class="contact-link" href="https://instagram.com/emara.architektur" target="_blank" rel="noopener noreferrer">@emara.architektur</a>
+          <a class="contact-link" href="mailto:info@emmarauwolf.de">info@emmarauwolf.de</a>
+          <a class="contact-link" href="https://instagram.com/emma.rauwolf" target="_blank" rel="noopener noreferrer">@emma.rauwolf</a>
           <div class="contact-link">Augsburg / Rosenheim</div>
         </div>
       </div>
     </section>
 
     <footer class="footer">
-      <span>EMARA Architektur</span>
-      <span>Portfolio</span>
+      <span>Emma Rauwolf Architektur</span>
+      <span>Atmosphäre · Klarheit · Raum</span>
     </footer>
+  </main>
 
+  <div class="project-modal" id="projectModal" aria-hidden="true">
+    <div class="project-modal-panel">
+      <button class="modal-close" type="button" aria-label="Projekt schließen">×</button>
+      <div class="project-modal-grid">
+        <div class="project-modal-gallery" id="modalGallery"></div>
+        <div class="project-modal-meta">
+          <div class="project-modal-kicker" id="modalKicker"></div>
+          <h3 id="modalTitle"></h3>
+          <p id="modalText"></p>
+          <div class="project-facts" id="modalFacts"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
-    function toggleProject(id, button) {
-      const detail = document.getElementById(id);
-      const isOpen = detail.classList.contains('open');
-
-      document.querySelectorAll('.project-detail').forEach(item => {
-        item.classList.remove('open');
-      });
-
-      document.querySelectorAll('.project-button').forEach(btn => {
-        btn.classList.remove('active');
-        const plus = btn.querySelector('.project-plus');
-        if (plus) plus.textContent = '+';
-      });
-
-      if (!isOpen) {
-        detail.classList.add('open');
-        button.classList.add('active');
-        const plus = button.querySelector('.project-plus');
-        if (plus) plus.textContent = '–';
+    const projectData = {
+      'vogelbeobachtungsstation': {
+        kicker: 'Naturraum · Beobachtung',
+        title: 'Vogelbeobachtungsstation',
+        text: 'Der Entwurf untersucht das Verhältnis von Landschaft, Blick und Rückzug. Die Architektur versteht sich als stilles Element im Naturraum und schafft eine präzise Atmosphäre zwischen Schutz, Offenheit und Beobachtung.',
+        facts: [
+          'Ort: ergänzen',
+          'Jahr: ergänzen',
+          'Typ: Beobachtungsstation',
+          'Konzept: Blickführung · Materialität · Einbindung in die Landschaft'
+        ],
+        images: [
+          'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1400&q=80',
+          'https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1400&q=80'
+        ]
+      },
+      'eventpavillon': {
+        kicker: 'Temporäre Architektur',
+        title: 'Eventpavillon',
+        text: 'Ein offener, leichter Baukörper für temporäre Veranstaltungen und Begegnung. Im Mittelpunkt stehen Flexibilität, räumliche Inszenierung und ein klarer architektonischer Ausdruck.',
+        facts: [
+          'Ort: ergänzen',
+          'Jahr: ergänzen',
+          'Typ: Pavillon',
+          'Konzept: Offenheit · Leichtigkeit · gemeinschaftliche Nutzung'
+        ],
+        images: [
+          'https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1400&q=80',
+          'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80'
+        ]
+      },
+      'gruenes-forum': {
+        kicker: 'Öffentlicher Raum',
+        title: 'Grünes Forum',
+        text: 'Das Projekt verbindet Freiraum, Gemeinschaft und stadträumliche Qualität. Entstanden ist ein Ort, der Nutzung, Aufenthalt und landschaftliche Atmosphäre in einer klaren Geste vereint.',
+        facts: [
+          'Ort: ergänzen',
+          'Jahr: ergänzen',
+          'Typ: Forum / Freiraum',
+          'Konzept: Öffentlichkeit · Landschaft · soziale Interaktion'
+        ],
+        images: [
+          'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80',
+          'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=80'
+        ]
+      },
+      'haus-der-demokratie': {
+        kicker: 'Öffentliches Gebäude',
+        title: 'Haus der Demokratie',
+        text: 'Architektur als räumliche Übersetzung von Offenheit, Dialog und Teilhabe. Der Entwurf schafft klare Bewegungsräume und eine starke öffentliche Identität.',
+        facts: [
+          'Ort: ergänzen',
+          'Jahr: ergänzen',
+          'Typ: Öffentliches Gebäude',
+          'Konzept: Transparenz · Gemeinschaft · Klarheit'
+        ],
+        images: [
+          'https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1400&q=80',
+          'https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1400&q=80'
+        ]
+      },
+      'ue60-wohnen': {
+        kicker: 'Wohnen · Gemeinschaft',
+        title: 'Ü60 Wohnen',
+        text: 'Ein Wohnkonzept, das Eigenständigkeit, Gemeinschaft und Alltagsqualität miteinander verbindet. Der Fokus liegt auf Atmosphäre, Orientierung und einer warmen räumlichen Identität.',
+        facts: [
+          'Ort: ergänzen',
+          'Jahr: ergänzen',
+          'Typ: Wohnen',
+          'Konzept: Gemeinschaft · Barrierearmut · Geborgenheit'
+        ],
+        images: [
+          'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=80',
+          'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80'
+        ]
+      },
+      'schwimmbadumnutzung': {
+        kicker: 'Bestand · Transformation',
+        title: 'Schwimmbadumnutzung',
+        text: 'Die Umnutzung interpretiert den Bestand neu und entwickelt daraus eine eigenständige architektonische Identität. Das Projekt zeigt, wie vorhandene Strukturen atmosphärisch und funktional transformiert werden können.',
+        facts: [
+          'Ort: ergänzen',
+          'Jahr: ergänzen',
+          'Typ: Umnutzung / Bestand',
+          'Konzept: Transformation · Erinnerung · neue Nutzungsschichten'
+        ],
+        images: [
+          'https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1400&q=80',
+          'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1400&q=80'
+        ]
       }
+    };
+
+    const modal = document.getElementById('projectModal');
+    const modalGallery = document.getElementById('modalGallery');
+    const modalKicker = document.getElementById('modalKicker');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+    const modalFacts = document.getElementById('modalFacts');
+    const closeButton = document.querySelector('.modal-close');
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => openProject(card.dataset.project));
+    });
+
+    function openProject(key) {
+      const project = projectData[key];
+      if (!project) return;
+
+      modalGallery.innerHTML = project.images
+        .map(src => `<img src="${src}" alt="${project.title}" />`)
+        .join('');
+      modalKicker.textContent = project.kicker;
+      modalTitle.textContent = project.title;
+      modalText.textContent = project.text;
+      modalFacts.innerHTML = project.facts
+        .map(fact => `<div class="project-fact">${fact}</div>`)
+        .join('');
+
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
     }
+
+    function closeProject() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    closeButton.addEventListener('click', closeProject);
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeProject();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeProject();
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.16 });
+
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
